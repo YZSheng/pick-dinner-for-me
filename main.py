@@ -9,13 +9,13 @@ def main():
     api_key = os.getenv("GOOGLE_PLACE_API_KEY")
     latitude = os.getenv("LATITUDE")
     longitude = os.getenv("LONGITUDE")
-    radius = 2000.0
+    radius = 1500.0
     included_types = arguments
 
     results = search_nearby_places(api_key, latitude, longitude, radius, included_types)
 
     if isinstance(results, dict):
-        print("Nearby places:")
+        print(f"Nearby {', '.join(arguments)} places:")
         for place in results.get("places", []):
             print(place.get("displayName").get("text"))
     else:
